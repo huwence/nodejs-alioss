@@ -28,7 +28,7 @@ module.exports = function sign(options, method, object, headers) {
     var date = new Date().toUTCString();
     var params = [
         options.method.toUpperCase(),
-        headers['content-md5'],
+        headers['content-md5'] || '',
         headers['content-type'],
         date
     ];

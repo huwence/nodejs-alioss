@@ -31,7 +31,8 @@ module.exports = function upload(dir, options, file, callback) {
     var headers = {
         'content-type': mime.get(extname)
     };
-    var object = options.dest + path.relative(dir, file);
+    var relativePath = path.relative(dir, file).replace(/\\/g, '\/');
+    var object = options.dest + relativePath;
     var remote = 'http://' + options.bucket + '.' + options.host + (object ? object : '');
 
     dato.extend(headers, options.headers);
